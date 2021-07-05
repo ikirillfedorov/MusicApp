@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */; };
 		5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */; };
-		5CA4BF252692AAE0002C3D3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF242692AAE0002C3D3E /* ViewController.swift */; };
-		5CA4BF282692AAE0002C3D3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA4BF262692AAE0002C3D3E /* Main.storyboard */; };
+		5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */; };
 		5CA4BF2A2692AAE3002C3D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA4BF292692AAE3002C3D3E /* Assets.xcassets */; };
 		5CA4BF2D2692AAE3002C3D3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA4BF2B2692AAE3002C3D3E /* LaunchScreen.storyboard */; };
+		5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF797262692BC6000582FF0 /* MainTabBarVC.swift */; };
+		5CF7972A2692BCA800582FF0 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF797292692BCA800582FF0 /* SearchVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5CA4BF1D2692AAE0002C3D3E /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5CA4BF242692AAE0002C3D3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5CA4BF272692AAE0002C3D3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryVC.swift; sourceTree = "<group>"; };
 		5CA4BF292692AAE3002C3D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CA4BF2C2692AAE3002C3D3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CA4BF2E2692AAE3002C3D3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CF797262692BC6000582FF0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		5CF797292692BCA800582FF0 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,22 @@
 			children = (
 				5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */,
 				5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */,
-				5CA4BF242692AAE0002C3D3E /* ViewController.swift */,
-				5CA4BF262692AAE0002C3D3E /* Main.storyboard */,
-				5CA4BF292692AAE3002C3D3E /* Assets.xcassets */,
-				5CA4BF2B2692AAE3002C3D3E /* LaunchScreen.storyboard */,
-				5CA4BF2E2692AAE3002C3D3E /* Info.plist */,
+				5CF797262692BC6000582FF0 /* MainTabBarVC.swift */,
+				5CF797292692BCA800582FF0 /* SearchVC.swift */,
+				5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */,
+				5CF7972D2692C5A700582FF0 /* SupportingFiles */,
 			);
 			path = MusicApp;
+			sourceTree = "<group>";
+		};
+		5CF7972D2692C5A700582FF0 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5CA4BF2E2692AAE3002C3D3E /* Info.plist */,
+				5CA4BF292692AAE3002C3D3E /* Assets.xcassets */,
+				5CA4BF2B2692AAE3002C3D3E /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +137,6 @@
 			files = (
 				5CA4BF2D2692AAE3002C3D3E /* LaunchScreen.storyboard in Resources */,
 				5CA4BF2A2692AAE3002C3D3E /* Assets.xcassets in Resources */,
-				5CA4BF282692AAE0002C3D3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +147,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CA4BF252692AAE0002C3D3E /* ViewController.swift in Sources */,
+				5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */,
+				5CF7972A2692BCA800582FF0 /* SearchVC.swift in Sources */,
 				5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */,
 				5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */,
+				5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5CA4BF262692AAE0002C3D3E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5CA4BF272692AAE0002C3D3E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5CA4BF2B2692AAE3002C3D3E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,6 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -271,6 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -288,7 +294,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4K2VL2BQJM;
-				INFOPLIST_FILE = MusicApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MusicApp/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +313,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4K2VL2BQJM;
-				INFOPLIST_FILE = MusicApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MusicApp/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
