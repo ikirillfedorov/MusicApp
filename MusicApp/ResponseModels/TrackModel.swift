@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct TrackModel {
-	let name: String
+struct TrackModel: Decodable {
+	let trackName: String?
+	let collectionName: String?
 	let artistName: String
+	let artworkUrl100: String?
 }

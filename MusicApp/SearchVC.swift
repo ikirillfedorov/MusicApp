@@ -6,16 +6,12 @@
 //
 
 import UIKit
+import Alamofire
 
 final class SearchVC: UITableViewController {
 	
-	let array = [
-		TrackModel(name: "Test1", artistName: "Test2"),
-		TrackModel(name: "Test1", artistName: "Test2"),
-		TrackModel(name: "Test1", artistName: "Test2"),
-		TrackModel(name: "Test1", artistName: "Test2"),
-		TrackModel(name: "Test1", artistName: "Test2")
-	]
+	private var tracks = [TrackModel]()
+	private var timer: Timer?
 	
 	let searchController = UISearchController(searchResultsController: nil)
 	
@@ -35,16 +31,27 @@ final class SearchVC: UITableViewController {
 		navigationItem.hidesSearchBarWhenScrolling = false
 	}
 	
+	private func makeURL(searchText: String) -> URL? {
+		var components = URLComponents()
+		components.scheme = "https"
+		components.host = "itunes.apple.com"
+		components.path = "/search"
+		components.queryItems = [
+			URLQueryItem(name: "term", value: searchText)
+		]
+		return components.url
+	}
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return array.count
+		return tracks.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-		let model = array[indexPath.row]
+		let model = tracks[indexPath.row]
 		cell.imageView?.image = UIImage(named: "search_ic")
-		cell.textLabel?.text = model.name
-		cell.detailTextLabel?.text = model.name
+		cell.textLabel?.text = model.artistName
+		cell.detailTextLabel?.text = model.trackName
 		return cell
 	}
 }
@@ -53,6 +60,25 @@ final class SearchVC: UITableViewController {
 
 extension SearchVC: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		print(searchText)
+		timer?.invalidate()
+		timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+			guard let url = self?.makeURL(searchText: searchText) else {
+				return
+			}
+			AF.request(url).response { [weak self] response in
+				if let error = response.error {
+					print(error.localizedDescription)
+					return
+				} else if let data = response.data {
+					do {
+						let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
+						self?.tracks = searchResponse.results
+						self?.tableView.reloadData()
+					} catch {
+						print(error.localizedDescription)
+					}
+				}
+			}
+		})
 	}
 }
