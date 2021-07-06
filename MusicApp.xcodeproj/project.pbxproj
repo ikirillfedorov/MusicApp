@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C5CB7B82693FB050093E1AD /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CB7B72693FB050093E1AD /* TrackModel.swift */; };
 		5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */; };
 		5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */; };
 		5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C5CB7B72693FB050093E1AD /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		5CA4BF1D2692AAE0002C3D3E /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				5CF797292692BCA800582FF0 /* SearchVC.swift */,
 				5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */,
 				5CF7972D2692C5A700582FF0 /* SupportingFiles */,
+				5C5CB7B72693FB050093E1AD /* TrackModel.swift */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */,
+				5C5CB7B82693FB050093E1AD /* TrackModel.swift in Sources */,
 				5CF7972A2692BCA800582FF0 /* SearchVC.swift in Sources */,
 				5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */,
 				5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */,
