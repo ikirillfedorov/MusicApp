@@ -15,8 +15,9 @@ final class MainTabBarVC: UITabBarController {
 	}
 	
 	private func setupUI() {
+		let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
 		viewControllers = [
-			makeViewController(SearchVC(), title: "Search", imageTitle: "search_ic"),
+			makeViewController(searchVC, title: "Search", imageTitle: "search_ic"),
 			makeViewController(LibraryVC(), title: "Library", imageTitle: "library_ic")
 		]
 	}
