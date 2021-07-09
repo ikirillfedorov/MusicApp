@@ -12,6 +12,7 @@ final class SearchVC: UITableViewController {
 	
 	private var tracks = [TrackModel]()
 	private var timer: Timer?
+	private let networkService = NetworkService()
 	
 	let searchController = UISearchController(searchResultsController: nil)
 	
@@ -29,17 +30,6 @@ final class SearchVC: UITableViewController {
 	private func setupSearchBar() {
 		navigationItem.searchController = searchController
 		navigationItem.hidesSearchBarWhenScrolling = false
-	}
-	
-	private func makeURL(searchText: String) -> URL? {
-		var components = URLComponents()
-		components.scheme = "https"
-		components.host = "itunes.apple.com"
-		components.path = "/search"
-		components.queryItems = [
-			URLQueryItem(name: "term", value: searchText)
-		]
-		return components.url
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,23 +52,10 @@ extension SearchVC: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		timer?.invalidate()
 		timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
-			guard let url = self?.makeURL(searchText: searchText) else {
-				return
-			}
-			AF.request(url).response { [weak self] response in
-				if let error = response.error {
-					print(error.localizedDescription)
-					return
-				} else if let data = response.data {
-					do {
-						let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-						self?.tracks = searchResponse.results
-						self?.tableView.reloadData()
-					} catch {
-						print(error.localizedDescription)
-					}
-				}
-			}
+			self?.networkService.fetchTracks(searchText: searchText, completion: { [weak self] response in
+				self?.tracks = response?.results ?? []
+				self?.tableView.reloadData()
+			})
 		})
 	}
 }
