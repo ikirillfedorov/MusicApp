@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ios10-apple-music-library-5nav-icon.png",
+      "filename" : "Icon Min.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ios10-apple-music-library-5nav-icon@2x.png",
+      "filename" : "Icon Min@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ios10-apple-music-library-5nav-icon@3x.png",
+      "filename" : "Icon Min@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

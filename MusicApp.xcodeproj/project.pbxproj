@@ -11,6 +11,9 @@
 		04427745269BEDB200B6CD66 /* CGFloat+Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04427744269BEDB200B6CD66 /* CGFloat+Offset.swift */; };
 		0463BE91269C08D80087FEF8 /* ZeroDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE90269C08D80087FEF8 /* ZeroDataView.swift */; };
 		0463BE94269C0AE30087FEF8 /* SearchFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */; };
+		5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */; };
+		5C054B36269CB33500B42E76 /* TrackDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */; };
+		5C054B89269CB9AE00B42E76 /* HasRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B88269CB9AE00B42E76 /* HasRootView.swift */; };
 		5C5CB7B82693FB050093E1AD /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CB7B72693FB050093E1AD /* TrackModel.swift */; };
 		5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */; };
 		5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */; };
@@ -36,6 +39,9 @@
 		04427744269BEDB200B6CD66 /* CGFloat+Offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Offset.swift"; sourceTree = "<group>"; };
 		0463BE90269C08D80087FEF8 /* ZeroDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDataView.swift; sourceTree = "<group>"; };
 		0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooterView.swift; sourceTree = "<group>"; };
+		5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
+		5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsVC.swift; sourceTree = "<group>"; };
+		5C054B88269CB9AE00B42E76 /* HasRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasRootView.swift; sourceTree = "<group>"; };
 		5C5CB7B72693FB050093E1AD /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		5CA4BF1D2692AAE0002C3D3E /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5C054B0C269CAF2E00B42E76 /* TrackDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */,
+				5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */,
+			);
+			path = TrackDetailView;
+			sourceTree = "<group>";
+		};
+		5C054B38269CB47600B42E76 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5C054B88269CB9AE00B42E76 /* HasRootView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		5CA4BF142692AAE0002C3D3E = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +150,7 @@
 		5CA4BF1F2692AAE0002C3D3E /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				5C054B38269CB47600B42E76 /* Protocols */,
 				5CF8B8B92697F8EF0075B7AC /* Extensions */,
 				5CA4BF202692AAE0002C3D3E /* AppDelegate.swift */,
 				5CA4BF222692AAE0002C3D3E /* SceneDelegate.swift */,
@@ -170,6 +194,7 @@
 		5CF8B8A32697F4BF0075B7AC /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				5C054B0C269CAF2E00B42E76 /* TrackDetailView */,
 				04427741269BEBC500B6CD66 /* Cells */,
 				5CF8B8B42697F6860075B7AC /* SearchViewController.storyboard */,
 				5CF8B8A82697F51F0075B7AC /* SearchViewController.swift */,
@@ -291,6 +316,7 @@
 				5CC9FDF6269405EC0071AF5E /* SearchResponse.swift in Sources */,
 				04427745269BEDB200B6CD66 /* CGFloat+Offset.swift in Sources */,
 				5CF8B8AC2697F51F0075B7AC /* SearchWorker.swift in Sources */,
+				5C054B36269CB33500B42E76 /* TrackDetailsVC.swift in Sources */,
 				5CF8B8AD2697F51F0075B7AC /* SearchRouter.swift in Sources */,
 				5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */,
 				5CF8B8AB2697F51F0075B7AC /* SearchPresenter.swift in Sources */,
@@ -303,7 +329,9 @@
 				5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */,
 				0463BE94269C0AE30087FEF8 /* SearchFooterView.swift in Sources */,
 				5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */,
+				5C054B89269CB9AE00B42E76 /* HasRootView.swift in Sources */,
 				0463BE91269C08D80087FEF8 /* ZeroDataView.swift in Sources */,
+				5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */,
 				5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */,
 				5CF8B8AE2697F51F0075B7AC /* SearchModels.swift in Sources */,
 			);
