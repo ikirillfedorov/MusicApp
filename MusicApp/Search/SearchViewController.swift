@@ -106,6 +106,14 @@ extension SearchViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchViewController: UITableViewDelegate {
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let cellViewModel = tracks[indexPath.row]
+		let trackDetailsVC = TrackDetailsVC()
+		trackDetailsVC.modalPresentationStyle = .fullScreen
+		present(trackDetailsVC, animated: true)
+	}
+	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 84
 	}
