@@ -12,11 +12,13 @@ struct TrackModel: Decodable {
 	let collectionName: String?
 	let artistName: String
 	let trackImageUrlString: String?
+	let previewUrl: String?
 	
 	private enum CodingKeys : String, CodingKey {
 		case trackName
 		case collectionName
 		case artistName
 		case trackImageUrlString = "artworkUrl100"
+		case previewUrl
 	}
 }

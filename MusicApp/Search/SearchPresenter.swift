@@ -19,6 +19,8 @@ class SearchPresenter: SearchPresentationLogic {
 		switch response {
 		case let .presentTracks(searchResults):
 			viewController?.displayData(viewModel: .displayTracks(tracks: searchResults?.results ?? []))
+		case .presentFooterView:
+			viewController?.displayData(viewModel: .displayFooterView)
 		}
 	}
 }

@@ -8,17 +8,25 @@
 
 import UIKit
 
-protocol SearchDisplayLogic: class {
+protocol SearchDisplayLogic: AnyObject {
 	func displayData(viewModel: Search.Model.ViewModel.ViewModelData)
 }
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
 	
+	// MARK: - Private types
+	
+	private enum Constants {
+		static let zeroDataHeaderViewHeight: CGFloat = 250
+	}
+	
 	var interactor: SearchBusinessLogic?
 	var router: (NSObjectProtocol & SearchRoutingLogic)?
 	
-	@IBOutlet weak var tableView: UITableView!
-	let searchController = UISearchController(searchResultsController: nil)
+	@IBOutlet private weak var tableView: UITableView!
+	private let zeroDataView = ZeroDataView()
+	private let searchFooterView = SearchFooterView()
+	private let searchController = UISearchController(searchResultsController: nil)
 	
 	private var tracks = [TrackModel]()
 	private var timer: Timer?
@@ -51,6 +59,8 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
 		registerCells()
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.separatorColor = .clear
+		tableView.tableFooterView = searchFooterView
 	}
 	
 	func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
@@ -58,13 +68,16 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
 		case let .displayTracks(tracksModel):
 			tracks = tracksModel
 			tableView.reloadData()
+			searchFooterView.hideLoader()
+		case .displayFooterView:
+			searchFooterView.showLoader()
 		}
 	}
 	
 	// MARK: - Private methods
 	
 	private func registerCells() {
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+		tableView.register(TrackCell.self, forCellReuseIdentifier: TrackCell.reuseIdentifier)
 	}
 	
 	private func setupSearchBar() {
@@ -75,12 +88,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
 	}
 }
 
-// MARK: - UITableViewDelegate
-
-extension SearchViewController: UITableViewDelegate {
-	
-}
-
 // MARK: - UITableViewDataSource
 
 extension SearchViewController: UITableViewDataSource {
@@ -89,12 +96,26 @@ extension SearchViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+		let cell = tableView.dequeueReusableCell(for: indexPath, cellType: TrackCell.self)
 		let model = tracks[indexPath.row]
-		cell.imageView?.image = UIImage(named: "search_ic")
-		cell.textLabel?.text = model.artistName
-		cell.detailTextLabel?.text = model.trackName
+		cell.configure(model: model)
 		return cell
+	}
+}
+
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 84
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		return zeroDataView
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return tracks.isEmpty ? Constants.zeroDataHeaderViewHeight : 0
 	}
 }
 
