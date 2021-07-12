@@ -16,7 +16,6 @@
 		5CC9FDF6269405EC0071AF5E /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9FDF5269405EC0071AF5E /* SearchResponse.swift */; };
 		5CC9FE272697EF5A0071AF5E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9FE262697EF5A0071AF5E /* NetworkService.swift */; };
 		5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF797262692BC6000582FF0 /* MainTabBarVC.swift */; };
-		5CF7972A2692BCA800582FF0 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF797292692BCA800582FF0 /* SearchVC.swift */; };
 		5CF8B8AB2697F51F0075B7AC /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF8B8A42697F51F0075B7AC /* SearchPresenter.swift */; };
 		5CF8B8AC2697F51F0075B7AC /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF8B8A52697F51F0075B7AC /* SearchWorker.swift */; };
 		5CF8B8AD2697F51F0075B7AC /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF8B8A62697F51F0075B7AC /* SearchRouter.swift */; };
@@ -40,7 +39,6 @@
 		5CC9FDF5269405EC0071AF5E /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		5CC9FE262697EF5A0071AF5E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5CF797262692BC6000582FF0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
-		5CF797292692BCA800582FF0 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		5CF8B8A42697F51F0075B7AC /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		5CF8B8A52697F51F0075B7AC /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		5CF8B8A62697F51F0075B7AC /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				5CC9FE2E2697F22B0071AF5E /* Services */,
 				5CF8B8A32697F4BF0075B7AC /* Search */,
 				5CF797262692BC6000582FF0 /* MainTabBarVC.swift */,
-				5CF797292692BCA800582FF0 /* SearchVC.swift */,
 				5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */,
 				5CF7972D2692C5A700582FF0 /* SupportingFiles */,
 				5CC9FDF82694061C0071AF5E /* ResponseModels */,
@@ -272,7 +269,6 @@
 				5CF8B8B02697F51F0075B7AC /* SearchInteractor.swift in Sources */,
 				5C5CB7B82693FB050093E1AD /* TrackModel.swift in Sources */,
 				5CF8B8BB2697F9080075B7AC /* UIViewController+Storyboard.swift in Sources */,
-				5CF7972A2692BCA800582FF0 /* SearchVC.swift in Sources */,
 				5CF8B8AF2697F51F0075B7AC /* SearchViewController.swift in Sources */,
 				5CA4BF212692AAE0002C3D3E /* AppDelegate.swift in Sources */,
 				5CA4BF232692AAE0002C3D3E /* SceneDelegate.swift in Sources */,
