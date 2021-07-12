@@ -1,16 +1,32 @@
 PODS:
-  - Alamofire (5.0.5)
+  - Alamofire (5.4.3)
+  - Kingfisher (6.3.0)
+  - Reusable (4.1.1):
+    - Reusable/Storyboard (= 4.1.1)
+    - Reusable/View (= 4.1.1)
+  - Reusable/Storyboard (4.1.1)
+  - Reusable/View (4.1.1)
+  - SnapKit (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (= 5.4.3)
+  - Kingfisher (= 6.3.0)
+  - Reusable (= 4.1.1)
+  - SnapKit (= 5.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Kingfisher
+    - Reusable
+    - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
+  Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 23368cef872f492ad3f9546d1c9a76b40fefa542
+PODFILE CHECKSUM: b4137b13cdbf19be9949c1938e8d9c98c1b95e2c
 
 COCOAPODS: 1.10.0
