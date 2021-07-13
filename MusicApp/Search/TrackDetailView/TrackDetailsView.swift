@@ -8,6 +8,11 @@
 import UIKit
 import Kingfisher
 
+enum TrackImageState {
+	case enlarge
+	case reduce
+}
+
 protocol TrackDetailsViewDelegate: AnyObject {
 	func dragDownButtonTapped(_ sender: UIButton)
 	func handleTrackSlider(_ sender: UISlider)
@@ -21,6 +26,9 @@ final class TrackDetailsView: UIView {
 	
 	// MARK: - Internal properties
 	
+	private(set) lazy var trackSlider = makeTrackSlider()
+	private(set) lazy var playButton = makePlayButton()
+
 	private(set) var trackUrlString: String?
 	
 	weak var delegate: TrackDetailsViewDelegate?
@@ -29,7 +37,6 @@ final class TrackDetailsView: UIView {
 	
 	private lazy var dragDownButton = makeDragDownButton()
 	private lazy var trackImageView = makeTrackImageView()
-	private lazy var trackSlider = makeTrackSlider()
 	private lazy var trackTimeLeadingLabel = makeTrackTimeLeadingLabel()
 	private lazy var trackTimeTrailingLabel = makeTrackTimeTrailingLabel()
 	private lazy var trackNameLabel = makeTrackNameLabel()
@@ -37,7 +44,6 @@ final class TrackDetailsView: UIView {
 	private lazy var trackControlStackView = makeTrackControlStackView()
 	private lazy var forwardArrowButton = makeForwardArrowButton()
 	private lazy var backArrowButton = makeBackArrowButton()
-	private(set) lazy var playButton = makePlayButton()
 	private lazy var trackVolumeStackView = makeTrackVolumeStackView()
 	private lazy var volumeSlider = makeVolumeSlider()
 	private lazy var minVolumeImageView = makeMinVolumeImageView()
@@ -72,9 +78,27 @@ final class TrackDetailsView: UIView {
 		trackImageView.kf.setImage(with: url, placeholder: trackImagePlaceholder)
 	}
 	
+	func animateTrackImage(state: TrackImageState) {
+		UIView.animate(
+			withDuration: 1,
+			delay: 0,
+			usingSpringWithDamping: 0.5,
+			initialSpringVelocity: 1,
+			options: .curveEaseOut) { [weak self] in
+			switch state {
+			case .enlarge:
+				self?.trackImageView.transform = .identity
+			case .reduce:
+				let scale: CGFloat = 0.8
+				self?.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+			}
+		}
+	}
+	
 	// MARK: - Private methods
 	
 	private func setupUI() {
+		animateTrackImage(state: .reduce)
 		backgroundColor = .white
 		
 		addSubview(dragDownButton)
@@ -202,6 +226,8 @@ private extension TrackDetailsView {
 	
 	func makeTrackImageView() -> UIImageView {
 		let imageView = UIImageView()
+		imageView.layer.cornerRadius = CGFloat.spacing16
+		imageView.layer.masksToBounds = true
 		return imageView
 	}
 	

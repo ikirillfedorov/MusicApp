@@ -32,6 +32,8 @@ final class TrackDetailsVC<RootView>: UIViewController, HasRootView where RootVi
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		playTrack()
+		monitorStartTime()
+		updateCurrentTimeSlider()
 	}
 	
 	// MARK: - Private methods
@@ -43,6 +45,20 @@ final class TrackDetailsVC<RootView>: UIViewController, HasRootView where RootVi
 		let playerItem = AVPlayerItem(url: url)
 		player.replaceCurrentItem(with: playerItem)
 		player.play()
+	}
+	
+	private func monitorStartTime() {
+		let times = [NSValue(time: CMTimeMake(value: 1, timescale: 100))]
+		player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+			self?.rootView.animateTrackImage(state: .enlarge)
+		}
+	}
+	
+	private func updateCurrentTimeSlider() {
+		let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+		let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+		let percentage = Float(currentTimeSeconds / durationSeconds)
+		rootView.trackSlider.setValue(percentage, animated: true)
 	}
 }
 
@@ -70,12 +86,17 @@ extension TrackDetailsVC: TrackDetailsViewDelegate {
 	}
 	
 	func playTrackTapped(_ sender: UIButton) {
-		if player.timeControlStatus == .paused {
+		switch player.timeControlStatus {
+		case .paused:
 			player.play()
 			rootView.playButton.setImage(UIImage(named: "pause"), for: .normal)
-		} else {
+			rootView.animateTrackImage(state: .enlarge)
+		case .playing:
 			player.pause()
 			rootView.playButton.setImage(UIImage(named: "play"), for: .normal)
+			rootView.animateTrackImage(state: .reduce)
+		default:
+			break
 		}
 	}
 }
