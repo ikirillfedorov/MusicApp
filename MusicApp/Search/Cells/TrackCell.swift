@@ -128,9 +128,10 @@ private extension TrackCell {
 	}
 	
 	func makeAddButton() -> UIButton {
-		let button = UIButton()
-		let image = UIImage(named: "add_ic")
+		let button = UIButton(type: .system)
+		let image = UIImage(named: "Add")
 		button.setImage(image, for: .normal)
+		button.tintColor = .red
 		button.setContentCompressionResistancePriority(.required, for: .horizontal)
 		button.setContentHuggingPriority(.required, for: .horizontal)
 		return button

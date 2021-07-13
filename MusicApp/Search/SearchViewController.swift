@@ -111,6 +111,7 @@ extension SearchViewController: UITableViewDelegate {
 		let cellViewModel = tracks[indexPath.row]
 		let trackDetailsVC = TrackDetailsVC()
 		trackDetailsVC.modalPresentationStyle = .fullScreen
+		trackDetailsVC.rootView.configure(model: cellViewModel)
 		present(trackDetailsVC, animated: true)
 	}
 	
