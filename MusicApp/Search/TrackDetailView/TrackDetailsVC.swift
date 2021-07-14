@@ -8,11 +8,20 @@
 import UIKit
 import AVKit
 
+protocol TrackMovingDelegate: AnyObject {
+	func moveBackToPreviousTrack() -> TrackModel?
+	func moveForwardToNextTrack() -> TrackModel?
+}
+
 final class TrackDetailsVC<RootView>: UIViewController, HasRootView where RootView: TrackDetailsView {
 	
 	// MARK: - Typealias
 	
 	typealias RootView = TrackDetailsView
+	
+	// MARK: - Internal properties
+	
+	weak var delegate: TrackMovingDelegate?
 	
 	// MARK: - Private properties
 	
@@ -31,9 +40,6 @@ final class TrackDetailsVC<RootView>: UIViewController, HasRootView where RootVi
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		playTrack()
-		monitorStartTime()
-		updateCurrentTimeSlider()
 	}
 	
 	// MARK: - Private methods
@@ -54,11 +60,22 @@ final class TrackDetailsVC<RootView>: UIViewController, HasRootView where RootVi
 		}
 	}
 	
+	private func observePlayerCurrentTime() {
+		let interval = CMTimeMake(value: 1, timescale: 2)
+		player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+			self?.rootView.trackTimeLeadingLabel.text = time.toDisplayString
+			let durationTime = self?.player.currentItem?.duration
+			let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString
+			self?.rootView.trackTimeTrailingLabel.text = "-\(currentDurationText)"
+			self?.updateCurrentTimeSlider()
+		}
+	}
+	
 	private func updateCurrentTimeSlider() {
 		let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
 		let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
 		let percentage = Float(currentTimeSeconds / durationSeconds)
-		rootView.trackSlider.setValue(percentage, animated: true)
+		rootView.trackSlider.value = percentage
 	}
 }
 
@@ -70,19 +87,32 @@ extension TrackDetailsVC: TrackDetailsViewDelegate {
 	}
 	
 	func handleTrackSlider(_ sender: UISlider) {
-		
+		let percentage = sender.value
+		guard let duration = player.currentItem?.duration else {
+			return
+		}
+		let durationInSeconds = CMTimeGetSeconds(duration)
+		let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+		let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+		player.seek(to: seekTime)
 	}
 	
 	func handleVolumeSlider(_ sender: UISlider) {
-		
+		player.volume = sender.value
 	}
 	
 	func previousTrackTapped(_ sender: UIButton) {
-		
+		guard let model = delegate?.moveBackToPreviousTrack() else {
+			return
+		}
+		self.rootView.configure(model: model)
 	}
 	
 	func nextTrackTapped(_ sender: UIButton) {
-		
+		guard let model = delegate?.moveForwardToNextTrack() else {
+			return
+		}
+		self.rootView.configure(model: model)
 	}
 	
 	func playTrackTapped(_ sender: UIButton) {
@@ -98,6 +128,12 @@ extension TrackDetailsVC: TrackDetailsViewDelegate {
 		default:
 			break
 		}
+	}
+	
+	func viewConfigured(_ sender: TrackDetailsView) {
+		playTrack()
+		monitorStartTime()
+		observePlayerCurrentTime()
 	}
 }
 

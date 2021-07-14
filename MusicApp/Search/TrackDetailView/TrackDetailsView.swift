@@ -20,6 +20,7 @@ protocol TrackDetailsViewDelegate: AnyObject {
 	func previousTrackTapped(_ sender: UIButton)
 	func nextTrackTapped(_ sender: UIButton)
 	func playTrackTapped(_ sender: UIButton)
+	func viewConfigured(_ sender: TrackDetailsView)
 }
 
 final class TrackDetailsView: UIView {
@@ -28,7 +29,9 @@ final class TrackDetailsView: UIView {
 	
 	private(set) lazy var trackSlider = makeTrackSlider()
 	private(set) lazy var playButton = makePlayButton()
-
+	private(set) lazy var trackTimeLeadingLabel = makeTrackTimeLeadingLabel()
+	private(set) lazy var trackTimeTrailingLabel = makeTrackTimeTrailingLabel()
+	
 	private(set) var trackUrlString: String?
 	
 	weak var delegate: TrackDetailsViewDelegate?
@@ -37,8 +40,8 @@ final class TrackDetailsView: UIView {
 	
 	private lazy var dragDownButton = makeDragDownButton()
 	private lazy var trackImageView = makeTrackImageView()
-	private lazy var trackTimeLeadingLabel = makeTrackTimeLeadingLabel()
-	private lazy var trackTimeTrailingLabel = makeTrackTimeTrailingLabel()
+	
+	
 	private lazy var trackNameLabel = makeTrackNameLabel()
 	private lazy var artistNameLabel = makeArtistNameLabel()
 	private lazy var trackControlStackView = makeTrackControlStackView()
@@ -68,6 +71,7 @@ final class TrackDetailsView: UIView {
 		artistNameLabel.text = model.artistName
 		trackUrlString = model.previewUrl
 		let trackImagePlaceholder = UIImage(named: "track_placeholder")
+		delegate?.viewConfigured(self)
 		guard
 			let largeImageString = model.trackImageUrlString?.replacingOccurrences(of: "100x100", with: "600x600"),
 			let url = URL(string: largeImageString)
@@ -335,6 +339,7 @@ private extension TrackDetailsView {
 			action: #selector(handleVolumeSlider),
 			for: .valueChanged
 		)
+		slider.value = 1
 		return slider
 	}
 	
