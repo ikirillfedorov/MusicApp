@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class MainTabBarVC: UITabBarController {
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -15,10 +17,13 @@ final class MainTabBarVC: UITabBarController {
 	}
 	
 	private func setupUI() {
+		let library = Library()
+		let hostVC = UIHostingController(rootView: library)
 		let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
+		
 		viewControllers = [
 			makeViewController(searchVC, title: "Search", imageTitle: "search"),
-			makeViewController(LibraryVC(), title: "Library", imageTitle: "library")
+			hostVC
 		]
 	}
 	

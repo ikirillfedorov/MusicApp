@@ -12,6 +12,7 @@
 		0463BE91269C08D80087FEF8 /* ZeroDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE90269C08D80087FEF8 /* ZeroDataView.swift */; };
 		0463BE94269C0AE30087FEF8 /* SearchFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */; };
 		04C9BCE2269E90CE00194795 /* CMTime+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9BCE1269E90CE00194795 /* CMTime+String.swift */; };
+		04C9BCE4269EA8C200194795 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9BCE3269EA8C200194795 /* Library.swift */; };
 		5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */; };
 		5C054B36269CB33500B42E76 /* TrackDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */; };
 		5C054B89269CB9AE00B42E76 /* HasRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B88269CB9AE00B42E76 /* HasRootView.swift */; };
@@ -41,6 +42,7 @@
 		0463BE90269C08D80087FEF8 /* ZeroDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDataView.swift; sourceTree = "<group>"; };
 		0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooterView.swift; sourceTree = "<group>"; };
 		04C9BCE1269E90CE00194795 /* CMTime+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+String.swift"; sourceTree = "<group>"; };
+		04C9BCE3269EA8C200194795 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
 		5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsVC.swift; sourceTree = "<group>"; };
 		5C054B88269CB9AE00B42E76 /* HasRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasRootView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				5CF797262692BC6000582FF0 /* MainTabBarVC.swift */,
 				5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */,
 				5CF7972D2692C5A700582FF0 /* SupportingFiles */,
+				04C9BCE3269EA8C200194795 /* Library.swift */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */,
 				5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */,
 				5CF8B8AE2697F51F0075B7AC /* SearchModels.swift in Sources */,
+				04C9BCE4269EA8C200194795 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
