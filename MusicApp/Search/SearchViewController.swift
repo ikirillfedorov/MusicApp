@@ -86,6 +86,30 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
 		searchController.searchBar.delegate = self
 		searchController.obscuresBackgroundDuringPresentation = false
 	}
+	
+	private func getTrack(isNext: Bool) -> TrackModel? {
+		guard let indexPath = tableView.indexPathForSelectedRow else {
+			return nil
+		}
+		tableView.deselectRow(at: indexPath, animated: true)
+		var nextIndexPath: IndexPath?
+		if isNext {
+			nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+			if indexPath.row == tracks.count - 1 {
+				nextIndexPath?.row = 0
+			}
+		} else {
+			nextIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+			if indexPath.row == 0 {
+				nextIndexPath?.row = tracks.count - 1
+			}
+		}
+		tableView.selectRow(at: nextIndexPath, animated: true, scrollPosition: .none)
+		guard let nextIndex = nextIndexPath?.row else {
+			return nil
+		}
+		return tracks[nextIndex]
+	}
 }
 
 // MARK: - UITableViewDataSource
@@ -110,6 +134,7 @@ extension SearchViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let cellViewModel = tracks[indexPath.row]
 		let trackDetailsVC = TrackDetailsVC()
+		trackDetailsVC.delegate = self
 		trackDetailsVC.modalPresentationStyle = .fullScreen
 		trackDetailsVC.rootView.configure(model: cellViewModel)
 		present(trackDetailsVC, animated: true)
@@ -136,5 +161,18 @@ extension SearchViewController: UISearchBarDelegate {
 		timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
 			self?.interactor?.makeRequest(request: .getTracks(searchText: searchText))
 		})
+	}
+}
+
+
+// MARK: - TrackMovingDelegate
+
+extension SearchViewController: TrackMovingDelegate {
+	func moveBackToPreviousTrack() -> TrackModel? {
+		return getTrack(isNext: false)
+	}
+	
+	func moveForwardToNextTrack() -> TrackModel? {
+		return getTrack(isNext: true)
 	}
 }

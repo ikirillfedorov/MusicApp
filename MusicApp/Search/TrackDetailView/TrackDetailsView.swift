@@ -8,6 +8,11 @@
 import UIKit
 import Kingfisher
 
+enum TrackImageState {
+	case enlarge
+	case reduce
+}
+
 protocol TrackDetailsViewDelegate: AnyObject {
 	func dragDownButtonTapped(_ sender: UIButton)
 	func handleTrackSlider(_ sender: UISlider)
@@ -15,11 +20,17 @@ protocol TrackDetailsViewDelegate: AnyObject {
 	func previousTrackTapped(_ sender: UIButton)
 	func nextTrackTapped(_ sender: UIButton)
 	func playTrackTapped(_ sender: UIButton)
+	func viewConfigured(_ sender: TrackDetailsView)
 }
 
 final class TrackDetailsView: UIView {
 	
 	// MARK: - Internal properties
+	
+	private(set) lazy var trackSlider = makeTrackSlider()
+	private(set) lazy var playButton = makePlayButton()
+	private(set) lazy var trackTimeLeadingLabel = makeTrackTimeLeadingLabel()
+	private(set) lazy var trackTimeTrailingLabel = makeTrackTimeTrailingLabel()
 	
 	private(set) var trackUrlString: String?
 	
@@ -29,15 +40,13 @@ final class TrackDetailsView: UIView {
 	
 	private lazy var dragDownButton = makeDragDownButton()
 	private lazy var trackImageView = makeTrackImageView()
-	private lazy var trackSlider = makeTrackSlider()
-	private lazy var trackTimeLeadingLabel = makeTrackTimeLeadingLabel()
-	private lazy var trackTimeTrailingLabel = makeTrackTimeTrailingLabel()
+	
+	
 	private lazy var trackNameLabel = makeTrackNameLabel()
 	private lazy var artistNameLabel = makeArtistNameLabel()
 	private lazy var trackControlStackView = makeTrackControlStackView()
 	private lazy var forwardArrowButton = makeForwardArrowButton()
 	private lazy var backArrowButton = makeBackArrowButton()
-	private(set) lazy var playButton = makePlayButton()
 	private lazy var trackVolumeStackView = makeTrackVolumeStackView()
 	private lazy var volumeSlider = makeVolumeSlider()
 	private lazy var minVolumeImageView = makeMinVolumeImageView()
@@ -62,6 +71,7 @@ final class TrackDetailsView: UIView {
 		artistNameLabel.text = model.artistName
 		trackUrlString = model.previewUrl
 		let trackImagePlaceholder = UIImage(named: "track_placeholder")
+		delegate?.viewConfigured(self)
 		guard
 			let largeImageString = model.trackImageUrlString?.replacingOccurrences(of: "100x100", with: "600x600"),
 			let url = URL(string: largeImageString)
@@ -72,9 +82,27 @@ final class TrackDetailsView: UIView {
 		trackImageView.kf.setImage(with: url, placeholder: trackImagePlaceholder)
 	}
 	
+	func animateTrackImage(state: TrackImageState) {
+		UIView.animate(
+			withDuration: 1,
+			delay: 0,
+			usingSpringWithDamping: 0.5,
+			initialSpringVelocity: 1,
+			options: .curveEaseOut) { [weak self] in
+			switch state {
+			case .enlarge:
+				self?.trackImageView.transform = .identity
+			case .reduce:
+				let scale: CGFloat = 0.8
+				self?.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+			}
+		}
+	}
+	
 	// MARK: - Private methods
 	
 	private func setupUI() {
+		animateTrackImage(state: .reduce)
 		backgroundColor = .white
 		
 		addSubview(dragDownButton)
@@ -202,6 +230,8 @@ private extension TrackDetailsView {
 	
 	func makeTrackImageView() -> UIImageView {
 		let imageView = UIImageView()
+		imageView.layer.cornerRadius = CGFloat.spacing16
+		imageView.layer.masksToBounds = true
 		return imageView
 	}
 	
@@ -309,6 +339,7 @@ private extension TrackDetailsView {
 			action: #selector(handleVolumeSlider),
 			for: .valueChanged
 		)
+		slider.value = 1
 		return slider
 	}
 	
