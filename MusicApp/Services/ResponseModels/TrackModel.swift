@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct TrackModel: Decodable {
+struct TrackModel: Codable, Identifiable {
+	let id: Int
 	let trackName: String?
 	let collectionName: String?
 	let artistName: String
@@ -20,5 +22,6 @@ struct TrackModel: Decodable {
 		case artistName
 		case trackImageUrlString = "artworkUrl100"
 		case previewUrl
+		case id = "trackId"
 	}
 }

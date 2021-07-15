@@ -3,15 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040AA84B269FE83F00C3198A /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AA84A269FE83F00C3198A /* LibraryCell.swift */; };
+		040AA84E269FF14700C3198A /* String+UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AA84D269FF14700C3198A /* String+UserDefaultKeys.swift */; };
+		040AA850269FF68600C3198A /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AA84F269FF68600C3198A /* StorageService.swift */; };
+		040AA853269FFD5200C3198A /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 040AA852269FFD5200C3198A /* URLImageStore */; };
+		040AA855269FFD5200C3198A /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 040AA854269FFD5200C3198A /* URLImage */; };
 		04427743269BEBD500B6CD66 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04427742269BEBD500B6CD66 /* TrackCell.swift */; };
 		04427745269BEDB200B6CD66 /* CGFloat+Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04427744269BEDB200B6CD66 /* CGFloat+Offset.swift */; };
 		0463BE91269C08D80087FEF8 /* ZeroDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE90269C08D80087FEF8 /* ZeroDataView.swift */; };
 		0463BE94269C0AE30087FEF8 /* SearchFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */; };
 		04C9BCE2269E90CE00194795 /* CMTime+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9BCE1269E90CE00194795 /* CMTime+String.swift */; };
+		04C9BCE4269EA8C200194795 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9BCE3269EA8C200194795 /* Library.swift */; };
 		5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */; };
 		5C054B36269CB33500B42E76 /* TrackDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */; };
 		5C054B89269CB9AE00B42E76 /* HasRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C054B88269CB9AE00B42E76 /* HasRootView.swift */; };
@@ -36,11 +42,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040AA84A269FE83F00C3198A /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
+		040AA84D269FF14700C3198A /* String+UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UserDefaultKeys.swift"; sourceTree = "<group>"; };
+		040AA84F269FF68600C3198A /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		04427742269BEBD500B6CD66 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		04427744269BEDB200B6CD66 /* CGFloat+Offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Offset.swift"; sourceTree = "<group>"; };
 		0463BE90269C08D80087FEF8 /* ZeroDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDataView.swift; sourceTree = "<group>"; };
 		0463BE93269C0AE30087FEF8 /* SearchFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooterView.swift; sourceTree = "<group>"; };
 		04C9BCE1269E90CE00194795 /* CMTime+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+String.swift"; sourceTree = "<group>"; };
+		04C9BCE3269EA8C200194795 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		5C054B0D269CAF5000B42E76 /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
 		5C054B35269CB33500B42E76 /* TrackDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsVC.swift; sourceTree = "<group>"; };
 		5C054B88269CB9AE00B42E76 /* HasRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasRootView.swift; sourceTree = "<group>"; };
@@ -73,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040AA853269FFD5200C3198A /* URLImageStore in Frameworks */,
+				040AA855269FFD5200C3198A /* URLImage in Frameworks */,
 				AE10D238C3AE1F479EFC8D25 /* libPods-MusicApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040AA84C269FE85C00C3198A /* LibraryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04C9BCE3269EA8C200194795 /* Library.swift */,
+				040AA84A269FE83F00C3198A /* LibraryCell.swift */,
+			);
+			path = LibraryScreen;
+			sourceTree = "<group>";
+		};
 		04427741269BEBC500B6CD66 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +182,7 @@
 				5CF797262692BC6000582FF0 /* MainTabBarVC.swift */,
 				5CA4BF242692AAE0002C3D3E /* LibraryVC.swift */,
 				5CF7972D2692C5A700582FF0 /* SupportingFiles */,
+				040AA84C269FE85C00C3198A /* LibraryScreen */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";
@@ -179,6 +201,7 @@
 			children = (
 				5CC9FDF82694061C0071AF5E /* ResponseModels */,
 				5CC9FE262697EF5A0071AF5E /* NetworkService.swift */,
+				040AA84F269FF68600C3198A /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,6 +239,7 @@
 				5CF8B8BA2697F9080075B7AC /* UIViewController+Storyboard.swift */,
 				04427744269BEDB200B6CD66 /* CGFloat+Offset.swift */,
 				04C9BCE1269E90CE00194795 /* CMTime+String.swift */,
+				040AA84D269FF14700C3198A /* String+UserDefaultKeys.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +261,10 @@
 			dependencies = (
 			);
 			name = MusicApp;
+			packageProductDependencies = (
+				040AA852269FFD5200C3198A /* URLImageStore */,
+				040AA854269FFD5200C3198A /* URLImage */,
+			);
 			productName = MusicApp;
 			productReference = 5CA4BF1D2692AAE0002C3D3E /* MusicApp.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 5CA4BF142692AAE0002C3D3E;
+			packageReferences = (
+				040AA851269FFD5200C3198A /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = 5CA4BF1E2692AAE0002C3D3E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -320,11 +351,14 @@
 				04427745269BEDB200B6CD66 /* CGFloat+Offset.swift in Sources */,
 				5CF8B8AC2697F51F0075B7AC /* SearchWorker.swift in Sources */,
 				5C054B36269CB33500B42E76 /* TrackDetailsVC.swift in Sources */,
+				040AA84E269FF14700C3198A /* String+UserDefaultKeys.swift in Sources */,
 				5CF8B8AD2697F51F0075B7AC /* SearchRouter.swift in Sources */,
 				04C9BCE2269E90CE00194795 /* CMTime+String.swift in Sources */,
+				040AA850269FF68600C3198A /* StorageService.swift in Sources */,
 				5CA4BF252692AAE0002C3D3E /* LibraryVC.swift in Sources */,
 				5CF8B8AB2697F51F0075B7AC /* SearchPresenter.swift in Sources */,
 				04427743269BEBD500B6CD66 /* TrackCell.swift in Sources */,
+				040AA84B269FE83F00C3198A /* LibraryCell.swift in Sources */,
 				5CC9FE272697EF5A0071AF5E /* NetworkService.swift in Sources */,
 				5CF8B8B02697F51F0075B7AC /* SearchInteractor.swift in Sources */,
 				5C5CB7B82693FB050093E1AD /* TrackModel.swift in Sources */,
@@ -338,6 +372,7 @@
 				5C054B0E269CAF5100B42E76 /* TrackDetailsView.swift in Sources */,
 				5CF797272692BC6000582FF0 /* MainTabBarVC.swift in Sources */,
 				5CF8B8AE2697F51F0075B7AC /* SearchModels.swift in Sources */,
+				04C9BCE4269EA8C200194795 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +570,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		040AA851269FFD5200C3198A /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		040AA852269FFD5200C3198A /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040AA851269FFD5200C3198A /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		040AA854269FFD5200C3198A /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040AA851269FFD5200C3198A /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CA4BF152692AAE0002C3D3E /* Project object */;
 }

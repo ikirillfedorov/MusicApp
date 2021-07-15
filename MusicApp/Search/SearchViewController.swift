@@ -164,7 +164,6 @@ extension SearchViewController: UISearchBarDelegate {
 	}
 }
 
-
 // MARK: - TrackMovingDelegate
 
 extension SearchViewController: TrackMovingDelegate {

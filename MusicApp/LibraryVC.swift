@@ -13,7 +13,5 @@ class LibraryVC: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBlue
 	}
-
-
 }
 
