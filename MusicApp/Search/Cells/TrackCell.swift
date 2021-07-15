@@ -23,6 +23,10 @@ final class TrackCell: UITableViewCell, Reusable {
 	private(set) lazy var collectionNameLabel = makeAlbumNameLabel()
 	private(set) lazy var addButton = makeAddButton()
 	
+	// MARK: - Private properties
+	
+	private var currentModel: TrackModel?
+	
 	// MARK: - Initialization
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,9 +44,13 @@ final class TrackCell: UITableViewCell, Reusable {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		imageView?.image = nil
+		addButton.isHidden = false
 	}
 	
 	func configure(model: TrackModel) {
+		let inFavorites = StorageService.tracks.first { $0.id == self.currentModel?.id } != nil
+		addButton.isHidden = inFavorites
+		currentModel = model
 		trackNameLabel.text = model.trackName
 		artistNameLabel.text = model.artistName
 		collectionNameLabel.text = model.collectionName
@@ -93,14 +101,23 @@ final class TrackCell: UITableViewCell, Reusable {
 			$0.trailing.equalToSuperview().inset(CGFloat.spacing16)
 		}
 	}
+	
+	// MARK: - Actions
+	
+	@objc
+	private func addButtonTapped() {
+		StorageService.addTrack(track: currentModel)
+		addButton.isHidden = true
+	}
 }
-
 
 // MARK: - Factory
 
 private extension TrackCell {
 	func makeTrackImageView() -> UIImageView {
 		let imageView = UIImageView()
+		imageView.layer.cornerRadius = CGFloat.spacing8
+		imageView.layer.masksToBounds = true
 		imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
 		imageView.setContentHuggingPriority(.required, for: .horizontal)
 		imageView.image = UIImage(named: "track_placeholder")
@@ -134,6 +151,7 @@ private extension TrackCell {
 		button.tintColor = .red
 		button.setContentCompressionResistancePriority(.required, for: .horizontal)
 		button.setContentHuggingPriority(.required, for: .horizontal)
+		button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
 		return button
 	}
 }

@@ -5,6 +5,14 @@
 import SwiftUI
 
 struct Library: View {
+	
+	@State private var savedTracks = StorageService.tracks
+	
+	private func deleteRow(at indexSet: IndexSet) {
+		indexSet.forEach { StorageService.remove(at: $0) }
+		indexSet.forEach { savedTracks.remove(at: $0) }
+	}
+
 	var body: some View {
 		NavigationView {
 			VStack {
@@ -32,29 +40,26 @@ struct Library: View {
 				}
 				.padding().frame(height: 65)
 				Divider()
+				
 				List {
-					LibraryCell()
-					LibraryCell()
-					LibraryCell()
-					LibraryCell()
-					LibraryCell()
+					ForEach(savedTracks, content: { track in
+						LibraryCell(cell: track)
+					})
+					.onDelete(perform: deleteRow)
+//					ForEach(animals, id: \.self) { animal in
+//						Text(animal)
+//					}
+					// 3.
+//					.onDelete(perform: self.deleteRow)
 				}
+
+				
+//				List(savedTracks) { track in
+//					LibraryCell(cell: track)
+//				}
 			}
 			.navigationBarTitle("Library")
 		}
-	}
-}
-
-struct LibraryCell: View {
-	var body: some View {
-		HStack {
-			Image("Image").resizable().frame(width: 60, height: 60).cornerRadius(2)
-			VStack {
-				Text("Track Name")
-				Text("Artist Name")
-			}
-		}
-		
 	}
 }
 

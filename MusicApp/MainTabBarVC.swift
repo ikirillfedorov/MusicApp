@@ -19,6 +19,8 @@ final class MainTabBarVC: UITabBarController {
 	private func setupUI() {
 		let library = Library()
 		let hostVC = UIHostingController(rootView: library)
+		hostVC.tabBarItem.image = UIImage(named: "library")
+		hostVC.tabBarItem.title = "Library"
 		let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
 		
 		viewControllers = [
